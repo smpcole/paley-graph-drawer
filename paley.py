@@ -4,9 +4,10 @@ import sys
 
 class Paley:
 
-    def __init__(self, p, radius = 290):
+    def __init__(self, p, radius = 290, speed = 0):
         self.p = p
         self.radius = radius
+        self.speed = speed
 
     """Return coordinates of ith vertex"""
     def getVertex(self, i):
@@ -16,7 +17,7 @@ class Paley:
     """Draw the Paley graph"""
     def draw(self):
         t = turtle.Turtle()
-        t.speed(0)
+        t.speed(self.speed)
         t.ht()
         visited = [[False for j in xrange(self.p)] for i in xrange(self.p)]
         for i in xrange(self.p):
