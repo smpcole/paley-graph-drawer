@@ -1,0 +1,8 @@
+# Emacs backups
+*\~
+
+# vi backups
+\#*\#
+
+# Compiled Python files
+*.pyc
