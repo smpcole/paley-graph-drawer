@@ -4,11 +4,9 @@ import sys
 
 class Paley:
 
-    def __init__(self, p, radius = None):
+    def __init__(self, p, radius = 290):
         self.p = p
         self.radius = radius
-        if self.radius == None:
-            self.radius = 10 * p
 
     """Return coordinates of ith vertex"""
     def getVertex(self, i):
