@@ -3,8 +3,8 @@
 /getvertex {
 	% i on stack
 	/theta exch 360 mul p div def
-	theta cos radius mul ctr_x sum
-	theta sin radius mul ctr_y sum
+	theta cos radius mul ctr_x add
+	theta sin radius mul ctr_y add
 } def
 
 % p center_x center_y radius drawpaley
@@ -16,9 +16,9 @@
 
 	% Define visited array to mark which edges have been drawn
 	/visited p array def
-	0 1 p {
+	0 1 p 1 sub {
 		/row p array def
-		0 1 p {
+		0 1 p 1 sub {
 			row exch false put
 		} for
 		visited exch row put
@@ -26,10 +26,10 @@
 	
 	newpath
 	
-	0 1 p {
+	0 1 p 1 sub {
 		/i exch def
 		1 1 p 1 sub 2 idiv {
-			/j exch 2 exp i sum p mod def
+			/j exch 2 exp i add p mod def
 			visited i get j get {
 				i getvertex moveto
 				j getvertex lineto
