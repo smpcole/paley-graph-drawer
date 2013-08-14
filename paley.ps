@@ -30,7 +30,7 @@
 		/i exch def
 		1 1 p 1 sub 2 idiv {
 			/j exch dup mul i add p mod def
-			visited i get j get {
+			visited i get j get not {
 				i getvertex moveto
 				j getvertex lineto
 				visited i get j true put
