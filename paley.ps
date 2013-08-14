@@ -7,11 +7,14 @@
 	theta sin radius mul ctr_y add
 } def
 
-% p center_x center_y radius drawpaley
+% Defaults
+/radius 200 def
+/ctr_x 306 def
+/ctr_y 396 def
+
+% p  drawpaley
 /drawpaley {
-	/radius exch def
-	/ctr_y exch def
-	/ctr_x exch def
+
 	/p exch def
 
 	% Define visited array to mark which edges have been drawn
@@ -43,6 +46,6 @@
 	
 } def
 
-17 306 396 100 drawpaley
+17 drawpaley
 
 showpage
