@@ -17,27 +17,16 @@
 
 	/p exch def
 
-	% Define visited array to mark which edges have been drawn
-	/visited p array def
-	0 1 p 1 sub {
-		/row p array def
-		0 1 p 1 sub {
-			row exch false put
-		} for
-		visited exch row put
-	} for
-	
 	newpath
 	
 	0 1 p 1 sub {
 		/i exch def
 		1 1 p 1 sub 2 idiv {
 			/j exch dup mul i add p mod def
-			visited i get j get not {
+			% Only draw "forward" edges so that each edge is only drawn once
+			j i gt {
 				i getvertex moveto
 				j getvertex lineto
-				visited i get j true put
-				visited j get i true put
 			} if
 		} for
 	} for

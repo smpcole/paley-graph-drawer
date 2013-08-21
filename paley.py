@@ -19,18 +19,17 @@ class Paley:
         t = turtle.Turtle()
         t.speed(self.speed)
         t.ht()
-        visited = [[False for j in xrange(self.p)] for i in xrange(self.p)]
         for i in xrange(self.p):
             t.pu()
             t.goto(self.getVertex(i))
-            for residue in xrange(1, (self.p - 1) / 2):
+            for residue in xrange(1, (self.p - 1) / 2 + 1):
                 j = (i + residue * residue) % self.p
-                if not visited[i][j]:
+                # Only draw the "forward" edges so each edge is only drawn once
+                if j > i:
                     t.pd()
                     t.goto(self.getVertex(j))
                     t.pu()
                     t.goto(self.getVertex(i))
-                    visited[i][j] = visited[j][i] = True
         turtle.done()
 
 def main(): 
