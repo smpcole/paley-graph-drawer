@@ -18,7 +18,7 @@ var newPaley = function(p, canvas) {
 	paley.draw = function() {
 
 		var ctx = this.canvas.getContext("2d");
-		ctx.clearRect(this.canvas.width, this.canvas.height);
+		ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		for(var i = 0; i < this.p; i++) {
 			var iCoords = this.getVertex(i);
 			ctx.moveTo(iCoords.x, iCoords.y);
