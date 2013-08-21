@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="canvas1" width="200" height="100" style="border:1px solid #000000;"></canvas>
+<canvas id="canvas2" width="400" height="200" style="border:1px solid #000000;"></canvas>
+
+<script src="paley.js">
+</script>
+
+<script>
+var paley = newPaley(13, document.getElementById("canvas1"));
+paley.draw();
+paley.p = 17;
+paley.canvas = document.getElementById("canvas2");
+paley.draw();
+</script>
+
+</body>
+</html>
