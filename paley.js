@@ -21,14 +21,14 @@ var newPaley = function(p, canvas) {
 
 		for(var i = 0; i < this.p; i++) {
 			var iCoords = this.getVertex(i);
-			ctx.moveTo(iCoords.x, iCoords.y);
 			for(var residue = 1; residue <= (this.p - 1) / 2; residue++) {
 				var j = (i + residue * residue) % this.p;
 				if(j > i) {
+					ctx.beginPath();
+					ctx.moveTo(iCoords.x, iCoords.y);
 					var jCoords = this.getVertex(j);
 					ctx.lineTo(jCoords.x, jCoords.y);
 					ctx.stroke();
-					ctx.moveTo(iCoords.x, iCoords.y);
 				}
 			}
 		}
