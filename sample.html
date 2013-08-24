@@ -4,12 +4,40 @@
 
 <canvas id="canvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
 
+<br>
+
+Order: 
+<select id="order">
+<option value=5>5</option>
+<option value=13>13</option>
+<option value=17>17</option>
+</select>
+
+Speed:
+<select id="speed">
+<option value=500>Slow</option>
+<option value=50>Fast</option>
+</select>
+
+<button onclick="buttonClicked()">Draw</button>
 <script src="paley.js">
 </script>
 
 <script>
-var paley = newPaley(13, document.getElementById("canvas"), 100);
-paley.draw();
+var canvas = document.getElementById("canvas");
+var paley = newPaley(5, canvas, 100);  // Speed parameter is optional
+var order = document.getElementById("order");
+var speed = document.getElementById("speed");
+
+// When button is clicked, clear canvas and draw the graph
+var buttonClicked = function() {
+    canvas.width = canvas.width;    // Clear canvas
+    clearInterval(paley.interval);    // Interrupt if it's not done drawing the previous graph
+    paley.p = order.options[order.selectedIndex].value;
+    paley.speed = speed.options[speed.selectedIndex].value;
+    paley.draw();
+};
+
 </script>
 
 </body>
