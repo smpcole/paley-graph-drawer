@@ -26,8 +26,6 @@ var newPaley = function(p, canvas, speed) {
 	    if(params.i >= pal.p) {
 			// Done
 			clearInterval(pal.interval);
-			console.log(params.i);
-			params.i += 1;
 		}
 		
 		else if(params.j > (pal.p - 1) / 2) {
@@ -54,7 +52,7 @@ var newPaley = function(p, canvas, speed) {
 	};
 
 	paley.draw = function() {
-		// Object to hold iteration variables and pointer to interval
+		// Object to hold iteration variables
 		var indices = {i: 0, j: 1};
 		this.interval = setInterval(drawLine, this.speed, this, indices);
 	};
