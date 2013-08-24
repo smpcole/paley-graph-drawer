@@ -11,11 +11,11 @@ var newPaley = function(p, canvas, speed) {
 	// Smaller number == faster speed
 	paley.speed = speed || 0;
 
-	paley.getVertex = function(i) {
+	var getVertex = function(pal, i) {
 		// These are also the coordinates of the center of the canvas
-		var xRad = this.canvas.width / 2;
-		var yRad = this.canvas.height / 2;
-		var angle = i * 2 * Math.PI / this.p;
+		var xRad = pal.canvas.width / 2;
+		var yRad = pal.canvas.height / 2;
+		var angle = i * 2 * Math.PI / pal.p;
 		return {x: xRad + xRad * Math.cos(angle), y: yRad + yRad * Math.sin(angle)};
 	};
 
@@ -37,8 +37,8 @@ var newPaley = function(p, canvas, speed) {
 			var j = (params.i + params.j * params.j) % pal.p;
 
 			if(j > params.i) {
-				var i = pal.getVertex(params.i);
-				j = pal.getVertex(j);
+				var i = getVertex(pal, params.i);
+				j = getVertex(pal, j);
 				var ctx = pal.canvas.getContext("2d");
 				ctx.beginPath();
 				ctx.moveTo(i.x, i.y);
