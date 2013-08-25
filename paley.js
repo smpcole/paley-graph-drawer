@@ -26,28 +26,34 @@ var newPaley = function(p, canvas, speed) {
 	    if(params.i >= pal.p) {
 			// Done
 			clearInterval(pal.interval);
+			return;
 		}
-		
-		else if(params.j > (pal.p - 1) / 2) {
-			// Done with vertex i
-			params.j = 1;
-			params.i += 1;
-		}
-		else {
-			var j = (params.i + params.j * params.j) % pal.p;
 
-			if(j > params.i) {
-				var i = getVertex(pal, params.i);
-				j = getVertex(pal, j);
-				var ctx = pal.canvas.getContext("2d");
-				ctx.beginPath();
-				ctx.moveTo(i.x, i.y);
-				ctx.lineTo(j.x, j.y);
-				ctx.stroke();
+		// Increment i and j until an edge has been drawn
+		for(; params.i < pal.p; params.i++) {
+
+			for(; params.j <= (pal.p - 1) / 2; params.j++) {
+
+				var j = (params.i + params.j * params.j) % pal.p;
+
+				// Only draw "forward" edges
+				if(j > params.i) {
+					var i = getVertex(pal, params.i);
+					j = getVertex(pal, j);
+					var ctx = pal.canvas.getContext("2d");
+					ctx.beginPath();
+					ctx.moveTo(i.x, i.y);
+					ctx.lineTo(j.x, j.y);
+					ctx.stroke();
+					// Edge has been drawn; increment i & j and return
+					if(params.j++ > (pal.p - 1) / 2) {
+						params.j = 1;
+						params.i++;
+					}
+					return;
+				}	
 			}
-
-			// Increment j
-			params.j += 1;
+			params.j = 1;
 		}
 	};
 
