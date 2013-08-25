@@ -2,7 +2,7 @@
 // -- p: a prime number === 1 mod 4
 // -- canvas: an HTML 5 canvas object
 // -- draw(): function to draw the Paley graph of order p on the canvas
-// -- interval: an interval at which the edges of the graph are being drawn
+// -- interval: handle for interval at which the edges of the graph are being drawn (so it can be passed to clearInterval()
 var newPaley = function(p, canvas, speed) {
 	var paley = {};
 	paley.p = p;
@@ -21,7 +21,7 @@ var newPaley = function(p, canvas, speed) {
 
 	// Callback for setInterval
 	// pal is a pointer to paley
-	// params is an object containing i, j, the interval
+	// params is an object containing the iteration variables i, j
 	var drawLine = function(pal, params) {
 	    if(params.i >= pal.p) {
 			// Done
