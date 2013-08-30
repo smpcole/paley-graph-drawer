@@ -45,11 +45,8 @@ var newPaley = function(p, canvas, speed) {
 					ctx.moveTo(i.x, i.y);
 					ctx.lineTo(j.x, j.y);
 					ctx.stroke();
-					// Edge has been drawn; increment i & j and return
-					if(params.j++ > (pal.p - 1) / 2) {
-						params.j = 1;
-						params.i++;
-					}
+					// Edge has been drawn; increment j and return
+					params.j++;
 					return;
 				}	
 			}
