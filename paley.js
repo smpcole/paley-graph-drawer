@@ -23,7 +23,7 @@ var newPaley = function(p, canvas, speed) {
 	// pal is a pointer to paley
 	// params is an object containing the iteration variables i, j
 	var drawLine = function(pal, params) {
-	    if(params.i >= pal.p) {
+		if(params.i >= pal.p) {
 			// Done
 			clearInterval(pal.interval);
 			return;
